@@ -2,6 +2,18 @@ const loginScript = `
     // hide get the app
     document.getElementsByClassName("mobile-teaser")[0].style.display = "none";
 
+    // move language select
+    // var lang = document.getElementsByClassName("pb-lang-sec")[0], 
+    // langparent = lang.parentNode, 
+    // langprev = lang.previousSibling,
+    // langoldChild = langparent.removeChild(lang);
+    // lang.style.position = "absolute";
+    // lang.style.top = "0";
+    // lang.style.right = "0";
+    // document.getElementsByTagName("header")[0].appendChild(lang)
+    // hide bar
+    // document.getElementById("pbar").style.display = "none"
+
     // add login
     var node = document.getElementById('login'),
     parent = node.parentNode,
@@ -33,7 +45,9 @@ const loginScript = `
     document.getElementsByClassName("ipp-login ipp facebook")[0].style.display = "none";
     document.getElementsByClassName("ipp-login ipp google")[0].style.display = "none";
     
+    // apply autologin
     document.getElementsByClassName("login-meta")[0].style.display = "none";
+    document.getElementById("login_remember_me").checked = true;
 
     true; // note: this is required, or you'll sometimes get silent failures
     `;

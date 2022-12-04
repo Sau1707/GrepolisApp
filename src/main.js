@@ -11,6 +11,7 @@ import usePage from "../hooks/usePage";
 /* Import scripts*/
 import loginScript from "../script/login";
 import gameScript from "../script/game";
+import world from "../script/world";
 
 export default function Webview() {
     /* Keep state or element and url */
@@ -34,7 +35,7 @@ export default function Webview() {
     /* Inject right js for each page */
     const handleLoadEnd = () => {
         if (page == "index") webView.current.injectJavaScript(loginScript)
-        if (page == "login") { }
+        if (page == "login") webView.current.injectJavaScript(world)
         if (page == "game") webView.current.injectJavaScript(gameScript)
         setTimeout(() => setSpinner(false), 1000)
     }
