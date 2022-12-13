@@ -49,3 +49,12 @@ document.getElementsByClassName('login-meta')[0].style.display = 'none';
 document.getElementById('login_remember_me').checked = true;
 
 true; // note: this is required, or you'll sometimes get silent failures
+
+/* 
+const settings = document.getElementById("global_settings");
+if (settings) {
+    let el = document.createElement("div");
+    el.id = "tools_settings";
+    settings.insertBefore(el, settings.children[settings.childElementCount - 1])
+}
+*/

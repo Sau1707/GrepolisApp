@@ -11,6 +11,10 @@ import loginScript from '../out/login';
 import gameScript from '../out/game';
 import worldScript from '../out/world';
 
+const INJECTED_JAVASCRIPT = `(function() {
+    window.ReactNativeWebView.postMessage(JSON.stringify({key : "value"}));
+})();`;
+
 const updateEvent = `
 var load_event = document.createEvent('Event');  
 load_event.initEvent('load', false, false);  
@@ -42,6 +46,7 @@ export default function Webview() {
 		if (page == 'login') webView.current.injectJavaScript(worldScript);
 		if (page == 'game') {
 			webView.current.injectJavaScript(gameScript);
+			//webView.current.injectJavaScript(INJECTED_JAVASCRIPT);
 		}
 		setTimeout(() => setSpinner(false), 1000);
 	};
@@ -63,6 +68,10 @@ export default function Webview() {
 					webView.current.canGoBack = navState.canGoBack;
 					if (!navState.url) return;
 					setUrl(navState.url);
+				}}
+				onMessage={(event) => {
+					console.log(JSON.parse(event.nativeEvent.data));
+					//alert(JSON.parse(event.nativeEvent.data).key);
 				}}
 				onLoadStart={() => setSpinner(true)}
 				onLoadEnd={handleLoadEnd}
